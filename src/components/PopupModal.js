@@ -152,10 +152,10 @@ class PopupContent extends React.Component {
         let pageClass = page;
         switch (page) {
         case 'signup':
-            cookieBannerText = 'Cookies must be enabled in your browser to sign up.';
+            cookieBannerText = 'Las Cookies deben habilitarse en tu navegador web para registrarte.';
             break;
         case 'signin':
-            cookieBannerText = 'Cookies must be enabled in your browser to sign in.';
+            cookieBannerText = 'Las Cookies deben habilitarse en tu navegador web para iniciar sesión.';
             break;
         case 'accountHome':
             pageClass = 'account-home';
@@ -167,7 +167,7 @@ class PopupContent extends React.Component {
             pageClass = 'account-plan';
             break;
         default:
-            cookieBannerText = 'Cookies must be enabled in your browser.';
+            cookieBannerText = 'Las Cookies deben activarse en tu navegador web.';
             pageClass = page;
             break;
         }

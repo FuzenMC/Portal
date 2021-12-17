@@ -372,7 +372,7 @@ class SignupPage extends React.Component {
                 type: 'email',
                 value: state.email,
                 placeholder: 'jamie@example.com',
-                label: 'Email',
+                label: 'Correo electrónico',
                 name: 'email',
                 required: true,
                 tabindex: 2,
@@ -385,8 +385,8 @@ class SignupPage extends React.Component {
             fields.unshift({
                 type: 'text',
                 value: state.name,
-                placeholder: 'Jamie Larson',
-                label: 'Name',
+                placeholder: 'Nick o Nombre',
+                label: 'Nombre',
                 name: 'name',
                 required: true,
                 tabindex: 1,
@@ -409,19 +409,19 @@ class SignupPage extends React.Component {
             return null;
         }
 
-        let label = 'Continue';
+        let label = 'Continuar';
         if (hasOnlyFreePlan({site})) {
-            label = 'Sign up';
+            label = 'Registrarte';
         }
 
         let isRunning = false;
         if (action === 'signup:running') {
-            label = 'Sending...';
+            label = 'Envíando...';
             isRunning = true;
         }
         let retry = false;
         if (action === 'signup:failed') {
-            label = 'Retry';
+            label = 'Reintentar';
             retry = true;
         }
 
@@ -485,13 +485,13 @@ class SignupPage extends React.Component {
         const {brandColor, onAction} = this.context;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Already a member?</div>
+                <div>¿Ya tienes cuenta?</div>
                 <button
                     className='gh-portal-btn gh-portal-btn-link'
                     style={{color: brandColor}}
                     onClick={() => onAction('switchPage', {page: 'signin'})}
                 >
-                    <span>Sign in</span>
+                    <span>Iniciar Sesión</span>
                 </button>
             </div>
         );
@@ -514,7 +514,7 @@ class SignupPage extends React.Component {
             return (
                 <section>
                     <div className='gh-portal-section'>
-                        <p className='gh-portal-invite-only-notification'>This site is invite-only, contact the owner for access.</p>
+                        <p className='gh-portal-invite-only-notification'>Este sitio es solo por invitación, comunícate con el propietario para acceder.</p>
                     </div>
                 </section>
             );

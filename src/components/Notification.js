@@ -34,50 +34,50 @@ const NotificationText = ({type, status, context}) => {
         const firstname = context.member.firstname || '';
         return (
             <p>
-                Welcome back{(firstname ? ', ' + firstname : '')}!<br />You've successfully signed in.
+                Bienvenido(a) de nuevo{(firstname ? ', ' + firstname : '')}!<br />Iniciaste sesión exitosamente.
             </p>
         );
     } else if (type === 'signin' && status === 'error') {
         return (
             <p>
-                Could not sign in. Login link expired. <a href={signinPortalLink} target="_parent">Click here to retry</a>
+                No se pudo iniciar sesión. El enlace de inicio de sesión caducó. <a href={signinPortalLink} target="_parent">Clic para reintentar</a>
             </p>
         );
     } else if (type === 'signup' && status === 'success') {
         return (
             <p>
-                You've successfully subscribed to <br /><strong>{context.site.title}</strong>
+                Te subscribiste exitosamente a <br /><strong>{context.site.title}</strong>
             </p>
         );
     } else if (type === 'updateEmail' && status === 'success') {
         return (
             <p>
-                Success! Your email is updated.
+                ¡Éxito! Tu correo está actualizado.
             </p>
         );
     } else if (type === 'updateEmail' && status === 'error') {
         return (
             <p>
-                Could not update email! Invalid link.
+                ¡No se pudo actualizar el correo! Enlace no válido.
             </p>
         );
     } else if (type === 'signup' && status === 'error') {
         return (
             <p>
-                Signup error: Invalid link <br /><a href={singupPortalLink} target="_parent">Click here to retry</a>
+                Error de registro: Enlace no válido.<br /><a href={singupPortalLink} target="_parent">Clic para reintentar</a>
             </p>
         );
     } else if (type === 'stripe:checkout' && status === 'success') {
         if (context.member) {
             return (
                 <p>
-                    Success! Your account is fully activated, you now have access to all content.
+                    ¡Éxito! Tu cuenta está activada, ahora tienes acceso a todo el contenido. 
                 </p>
             );
         }
         return (
             <p>
-                Success! Check your email for magic link to sign-in.
+                ¡Éxito! Revisa tu correo electrónico por un enlace mágico para iniciar sesión.
             </p>
         );
     } else if (type === 'stripe:checkout' && status === 'warning') {
@@ -85,19 +85,19 @@ const NotificationText = ({type, status, context}) => {
         if (context.member) {
             return (
                 <p>
-                    Plan upgrade was cancelled.
+                    Se canceló la mejora del plan.
                 </p>
             );
         }
         return (
             <p>
-                Plan checkout was cancelled.
+                Se canceló el pago del plan.
             </p>
         );
     }
     return (
         <p>
-            {status === 'success' ? 'Success' : 'Error'}
+            {status === 'success' ? 'Éxito' : 'Error'}
         </p>
     );
 };

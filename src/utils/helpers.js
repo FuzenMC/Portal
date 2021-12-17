@@ -444,7 +444,7 @@ export const getSiteDomain = ({site}) => {
 };
 
 export const getCurrencySymbol = (currency) => {
-    return Intl.NumberFormat('en', {currency, style: 'currency'}).format(0).replace(/[\d\s.]/g, '');
+    return Intl.NumberFormat('es', {currency, style: 'currency'}).format(0).replace(/[\d\s.]/g, ''); //Fuzen - usar 'es' y no 'en'
 };
 
 export const getStripeAmount = (amount) => {

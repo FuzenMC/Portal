@@ -235,7 +235,7 @@ export default class OfferPage extends React.Component {
                 type: 'email',
                 value: member?.email || state.email,
                 placeholder: 'jamie@example.com',
-                label: 'Email',
+                label: 'Correo electrónico',
                 name: 'email',
                 disabled: !!member,
                 required: true,
@@ -249,8 +249,8 @@ export default class OfferPage extends React.Component {
             fields.unshift({
                 type: 'text',
                 value: member?.name || state.name,
-                placeholder: 'Jamie Larson',
-                label: 'Name',
+                placeholder: 'Nick o Nombre',
+                label: 'Nombre',
                 name: 'name',
                 disabled: !!member,
                 required: true,
@@ -355,16 +355,16 @@ export default class OfferPage extends React.Component {
 
     renderSubmitButton() {
         const {action, brandColor} = this.context;
-        let label = 'Continue';
+        let label = 'Continuar';
 
         let isRunning = false;
         if (action === 'signup:running') {
-            label = 'Sending...';
+            label = 'Envíando...';
             isRunning = true;
         }
         let retry = false;
         if (action === 'signup:failed') {
-            label = 'Retry';
+            label = 'Reintentar';
             retry = true;
         }
 
@@ -391,13 +391,13 @@ export default class OfferPage extends React.Component {
         const {brandColor, onAction} = this.context;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Already a member?</div>
+                <div>¿Ya eres un miembro?</div>
                 <button
                     className='gh-portal-btn gh-portal-btn-link'
                     style={{color: brandColor}}
                     onClick={() => onAction('switchPage', {page: 'signin'})}
                 >
-                    <span>Sign in</span>
+                    <span>Iniciar Sesión</span>
                 </button>
             </div>
         );
@@ -407,11 +407,11 @@ export default class OfferPage extends React.Component {
         const {pageData: offer} = this.context;
         if (offer.type === 'fixed') {
             return (
-                <h5 className="gh-portal-offer-tag">{getCurrencySymbol(offer.currency)}{offer.amount / 100} off</h5>
+                <h5 className="gh-portal-offer-tag">{getCurrencySymbol(offer.currency)}{offer.amount / 100} de descuento</h5>
             );
         }
         return (
-            <h5 className="gh-portal-offer-tag">{offer.amount}% off</h5>
+            <h5 className="gh-portal-offer-tag">{offer.amount}% de descuento</h5>
         );
     }
 
@@ -478,21 +478,21 @@ export default class OfferPage extends React.Component {
         const originalPrice = this.getOriginalPrice({offer, product});
         let renewsLabel = '';
         if (discountDuration === 'once') {
-            durationLabel = `for first ${offer.cadence}`;
-            renewsLabel = `Renews at ${originalPrice}.`;
+            durationLabel = `por los primeros ${offer.cadence}`;
+            renewsLabel = `Se renueva en ${originalPrice}.`;
         } else if (discountDuration === 'forever') {
-            durationLabel = `forever`;
+            durationLabel = `por siempre`;
         } else if (discountDuration === 'repeating') {
             const durationInMonths = offer.duration_in_months || '';
             if (durationInMonths === 1) {
-                durationLabel = `for first month`;
+                durationLabel = `por el primer mes`;
             } else {
-                durationLabel = `for first ${durationInMonths} months`;
+                durationLabel = `por los primeros ${durationInMonths} meses`;
             }
-            renewsLabel = `Renews at ${originalPrice}.`;
+            renewsLabel = `Se renueva en ${originalPrice}.`;
         }
         return (
-            <p className="footnote">{this.getOffAmount({offer})} off {durationLabel}. {renewsLabel}</p>
+            <p className="footnote">{this.getOffAmount({offer})} de descuento {durationLabel}. {renewsLabel}</p>
         );
     }
 
@@ -501,11 +501,11 @@ export default class OfferPage extends React.Component {
 
         if (hasMultipleProductsFeature({site})) {
             return (
-                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Mensualmente' : 'Anualmente')}</h4>
             );
         }
         return (
-            <h4 className="gh-portal-plan-name">{(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+            <h4 className="gh-portal-plan-name">{(offer.cadence === 'month' ? 'Mensualmente' : 'Anualmente')}</h4>
         );
     }
 
@@ -550,7 +550,7 @@ export default class OfferPage extends React.Component {
                                 {(!offer.display_title && !offer.display_description ?
                                     this.renderOfferTag()
                                     : '')}
-                                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Monthly' : 'Yearly')}</h4>
+                                <h4 className="gh-portal-plan-name">{product.name} - {(offer.cadence === 'month' ? 'Mensualmente' : 'Anualmente')}</h4>
                                 {(!benefits.length && !product.description ?
                                     this.renderOfferMessage({offer, product})
                                     : '')}

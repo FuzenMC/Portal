@@ -61,7 +61,7 @@ export default class SigninPage extends React.Component {
                 type: 'email',
                 value: state.email,
                 placeholder: 'jamie@example.com',
-                label: 'Email',
+                label: 'Correo electrónico',
                 name: 'email',
                 required: true,
                 errorMessage: errors.email || '',
@@ -75,10 +75,10 @@ export default class SigninPage extends React.Component {
         const {action} = this.context;
         let retry = false;
         const isRunning = (action === 'signin:running');
-        let label = isRunning ? 'Sending login link...' : 'Continue';
+        let label = isRunning ? 'Envíando enlace de inicio de sesión...' : 'Continue';
         const disabled = isRunning ? true : false;
         if (action === 'signin:failed') {
-            label = 'Retry';
+            label = 'Reintentar';
             retry = true;
         }
         return (
@@ -98,8 +98,8 @@ export default class SigninPage extends React.Component {
         const brandColor = this.context.brandColor;
         return (
             <div className='gh-portal-signup-message'>
-                <div>Don't have an account?</div>
-                <button className='gh-portal-btn gh-portal-btn-link' style={{color: brandColor}} onClick={() => this.context.onAction('switchPage', {page: 'signup'})}><span>Sign up</span></button>
+                <div>¿No tienes una cuenta?</div>
+                <button className='gh-portal-btn gh-portal-btn-link' style={{color: brandColor}} onClick={() => this.context.onAction('switchPage', {page: 'signup'})}><span>Registrarse</span></button>
             </div>
         );
     }
@@ -133,12 +133,12 @@ export default class SigninPage extends React.Component {
     }
 
     renderFormHeader() {
-        const siteTitle = this.context.site.title || 'Site Title';
+        const siteTitle = this.context.site.title || 'Título del Sitio';
 
         return (
             <header className='gh-portal-signin-header'>
                 {this.renderSiteLogo()}
-                <h2 className="gh-portal-main-title">Log in to {siteTitle}</h2>
+                <h2 className="gh-portal-main-title">Iniciar sesión en {siteTitle}</h2>
             </header>
         );
     }

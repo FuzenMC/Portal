@@ -4,5 +4,5 @@ export const getDateString = (isoDate) => {
     }
     const event = new Date(isoDate);
     const options = {year: 'numeric', month: 'short', day: 'numeric'};
-    return event.toLocaleDateString('en-GB', options);
+    return event.toLocaleDateString('es-ES', options); //Fuzen - Usar es-ES en lugar de en-GB
 };
